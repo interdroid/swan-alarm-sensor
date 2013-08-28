@@ -1,0 +1,33 @@
+{"name": "alarm",
+ "cuckoo" : "true",
+ "namespace": "interdroid.swan.cuckoo_alarm_sensor",
+ "doc": "A sensor for alarm in the Netherlands",
+ "author": "roelof &lt;rkemp@cs.vu.nl&gt;",
+ "configs": [
+  {"name": "region", 
+   "class": "ListPreference",
+   "type": "String",
+   "default": "all",
+   "android:entries": "@array/regions",
+   "android:entryValues": "@array/regions",
+   "android:title" : "Region",
+   "android:summary" : "Set Region",
+   "android:dialogTitle": "Choose Region"},
+  {"name": "type", 
+   "class": "ListPreference",
+   "type": "String",
+   "default": "",
+   "android:entries": "@array/types",
+   "android:entryValues": "@array/type_values",
+   "android:title": "Type",
+   "android:summary": "Set Type",
+   "android:dialogTitle": "Choose Type"}
+ ],
+ "valuePaths": [{"name":"recent", "type":"string"}],
+ "values": [
+  {"name": "regions", "type": "string-array", "items": ["all", "Amsterdam-Amstelland", "Brabant-Noord", "Brabant-Zuidoost", "Drenthe", "Flevoland", "Friesland", "Gelderland-Midden", "Gelderland-Zuid", "Gooi en Vechtstreek", "Groningen", "Haaglanden", "Hollands Midden", "IJsselland", "Kennemerland", "Limburg Noord", "Limburg Zuid", "Midden- en West-Brabant", "Noord en Oost-Gelderland", "Noord-Holland Noord", "Rotterdam-Rijnmond", "Twente", "Utrecht", "Zaanstreek-Waterland", "Zeeland", "Zuid-Holland Zuid"]},
+  {"name": "types", "type": "string-array", "items": ["all", "Fire Brigade", "Police", "Paramedic", "Rescue Brigade", "Trauma Heli"]},
+  {"name": "type_values", "type": "string-array", "items": ["", "brandweer", "politie", "ambulance", "knrm", "trauma"]}
+ ]
+  
+}

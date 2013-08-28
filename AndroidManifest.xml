@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="interdroid.swan.cuckoo_alarm_sensor"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <application
+        android:icon="@drawable/icon_alarm"
+        android:label="@string/app_name" >
+        <activity
+            android:name="interdroid.swan.cuckoo_alarm_sensor.AlarmSensor$ConfigurationActivity"
+            android:exported="true"
+            android:icon="@drawable/icon_alarm" >
+            <meta-data
+                android:name="entityId"
+                android:value="alarm" />
+            <meta-data
+                android:name="valuePaths"
+                android:value="recent" />
+            <meta-data
+                android:name="authority"
+                android:value="interdroid.swan.cuckoo_alarm_sensor.alarm" />
+            <meta-data
+                android:name="region"
+                android:value="all" />
+            <meta-data
+                android:name="type"
+                android:value="" />
+            <meta-data
+                android:name="units"
+                android:value="" />
+
+            <intent-filter>
+                <action android:name="interdroid.swan.sensor.DISCOVER" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name="interdroid.swan.cuckoo_alarm_sensor.AlarmSensor"
+            android:exported="true" >
+        </service>
+
+        <provider
+            android:name="interdroid.swan.cuckoo_alarm_sensor.AlarmSensor$Provider"
+            android:authorities="interdroid.swan.cuckoo_alarm_sensor.alarm" />
+
+    </application>
+
+    <uses-sdk android:minSdkVersion="14" />
+
+    <!-- Experiment permission -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <!--  -->
+    <uses-permission android:name="interdroid.vdb.permission.READ_DATABASE" />
+    <uses-permission android:name="interdroid.vdb.permission.WRITE_DATABASE" />
+
+    <!-- Start Permissions needed for Communication Offloading with Cuckoo -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+
+    <permission
+        android:name="interdroid.swan.cuckoo_alarm_sensor.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="interdroid.swan.cuckoo_alarm_sensor.permission.C2D_MESSAGE" />
+    <!-- End Permissions needed for Communication Offloading with Cuckoo -->
+
+</manifest>
